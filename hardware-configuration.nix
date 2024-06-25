@@ -8,45 +8,30 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "ahci" "ohci_pci" "ehci_pci" "pata_atiixp" "xhci_pci" "usb_storage" "usbhid" "floppy" "sd_mod" "sr_mod" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" "it87" ];
+  boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/1a4098fd-2a96-4097-8c92-7617a901800c";
+    { device = "/dev/disk/by-uuid/c2fb9ba6-cd70-4618-8305-a05c075fbcd6";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/42E5-029B";
+    { device = "/dev/disk/by-uuid/1C9D-6A52";
       fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
   swapDevices = [ ];
-
-  hardware.fancontrol = {
-    enable = true;
-    config = ''
-      INTERVAL=10
-      DEVPATH=hwmon1=devices/pci0000:00/0000:00:18.3 hwmon0=devices/platform/it87.552
-      DEVNAME=hwmon1=k10temp hwmon0=it8728
-      FCTEMPS=hwmon0/pwm3=hwmon1/temp1_input
-      FCFANS= hwmon0/pwm3=hwmon0/fan1_input
-      MINTEMP=hwmon0/pwm3=50
-      MAXTEMP=hwmon0/pwm3=65
-      MINPWM= hwmon0/pwm3=0
-      MINSTART=hwmon0/pwm3=0
-      MINSTOP=hwmon0/pwm3=0
-    '';
-  };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp42s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
