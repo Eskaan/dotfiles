@@ -11,7 +11,6 @@
   boot.loader.systemd-boot.enable = true;
   
   networking.hostName = "mainsrv";
-  networking.interfaces."enp3s0".wakeOnLan.enable = true;
 
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
