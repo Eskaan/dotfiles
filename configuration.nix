@@ -7,11 +7,9 @@
       ./modules/bundle.nix
     ];
 
-  # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.timeout = 0;
-
+  # Use the systemd-boot loader.
+  boot.loader.systemd-boot.enable = true;
+  
   networking.hostName = "mainsrv";
   networking.interfaces."enp3s0".wakeOnLan.enable = true;
 
