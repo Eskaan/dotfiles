@@ -10,7 +10,8 @@
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  # nct6683: Driver for motherboard probes
+  boot.kernelModules = [ "kvm-amd" "nct6683" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
