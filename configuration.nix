@@ -49,8 +49,7 @@
         vim = "nvim";
         e = "exit";
         c = "clear";
-	rb = "nixos-rebuild switch";
-	update = "nix-channel --update && nixos-rebuild switch --upgrade-all";
+	rb = "nixos-rebuild switch --flake ./#mainsrv";
       };
     };
     git = {
