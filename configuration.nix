@@ -22,12 +22,16 @@
   users.mutableUsers = false;
 
   environment.systemPackages = with pkgs; [
+    # Base / essentials
     neovim
     wget
     curl
     git
+
+    # Sensors and monitors
     htop
     lm_sensors
+    i2c-tools
     amdctl
     linuxPackages.cpupower
     ethtool
