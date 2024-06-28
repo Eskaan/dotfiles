@@ -35,6 +35,9 @@
     amdctl
     linuxPackages.cpupower
     ethtool
+
+    # Backup drives
+    linuxPackages.zfs
   ];
 
   services.openssh = {
