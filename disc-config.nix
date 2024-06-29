@@ -1,7 +1,7 @@
 {
   disko.devices = {
     disk = {
-      my-disk = {
+      main-storage = {
         device = "/dev/nvme0n1";
         type = "disk";
         content = {
@@ -28,5 +28,21 @@
         };
       };
     };
+    hdd-backup = {
+        type = "disk";
+        device = "/dev/sda";
+        content = {
+          type = "gpt";
+          partitions = {
+            zfs = {
+              size = "100%";
+              content = {
+                type = "zfs";
+                pool = "hdd-backup";
+              };
+            };
+          };
+        };
+      };
   };
 }

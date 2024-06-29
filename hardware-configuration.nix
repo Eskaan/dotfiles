@@ -13,26 +13,33 @@
   # nct6683: Driver for motherboard probes
   boot.kernelModules = [ "kvm-amd" "nct6683" ];
   boot.extraModulePackages = [ ];
+  boot.zfs.extraPools = [ "hdd-backup" ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/7d4db75e-58ca-4cd2-a56e-e54af360fd77";
+    { device = "/dev/disk/by-id/nvme-WD_Green_SN350_2TB_224805467712-part2";
       fsType = "ext4";
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/2300-550E";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-id/nvme-WD_Green_SN350_2TB_224805467712-part1";
+    fsType = "vfat";
+    options = [ "fmask=0022" "dmask=0022" ];
+  };
+
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.forceImportRoot = false; 
+  services.zfs.trim.enable = true;
+  fileSystems."/hdd-backup" = {
+    device = "hdd-backup";
+    fsType = "zfs";
+  };
 
   swapDevices = [ ];
 
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+
   networking.useDHCP = lib.mkDefault true;
   networking.interfaces.enp42s0.wakeOnLan.enable = true;
+  networking.hostId = "82e4e991";
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
