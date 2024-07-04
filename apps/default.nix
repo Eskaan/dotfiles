@@ -1,7 +1,9 @@
 { pkgs, settings, ... }: rec {
   # Format and install from nothing
-  installer = import ./installer.nix { inherit pkgs; };
-
-  # Niot (nixos-tools): Scripts for system maintenance
-  installer = import ./niot.nix { inherit pkgs settings; };
+  installer = {
+    type = "app";
+    program = builtins.toString (
+      pkgs.writeShellScript "installer" (builtins.readFile ../installer.sh)
+    );
+  };
 }

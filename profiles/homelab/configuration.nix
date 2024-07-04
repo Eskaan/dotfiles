@@ -4,10 +4,10 @@
   imports =
     [
       ../../system/hardware-configuration.nix
-      ../base.nix { inherit lib pkgs settings; }
+      ../base.nix
 
-      ../../apps/niot.nix { inherit pkgs settings; }
-
+      ../../system/bin/niot.nix
+      
       ../../system/app/sshd.nix
     ];
 
