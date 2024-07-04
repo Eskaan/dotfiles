@@ -31,20 +31,19 @@
           };
         };
       };
-    };
-    hdd-backup = {
-      type = "disk";
-      device = settings.system.disks.backup;
-      content = {
-        type = "gpt";
-        partitions = {
-          zfs = {
-            size = "100%";
-            content = {
-              type = "zfs";
-              pool = "hdd-backup";
+      hdd-backup = {
+        type = "disk";
+        device = settings.system.disks.backup;
+        content = {
+          type = "gpt";
+          partitions = {
+            zfs = {
+              size = "100%";
+              content = {
+                type = "zfs";
+                pool = "hdd-backup";
+              };
             };
-            mountpoint = "/hdd-backup";
           };
         };
       };
