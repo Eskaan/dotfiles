@@ -65,4 +65,8 @@
       };
     };
   };
+
+  services.zfs.trim.enable = true;
+  services.zfs.autoScrub.enable = true;
+  boot.zfs.extraPools = [ "hdd-backup" ];
 }
