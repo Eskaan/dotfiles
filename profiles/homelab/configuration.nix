@@ -4,8 +4,11 @@
   imports =
     [
       ../../system/hardware-configuration.nix
-
       ../base.nix { inherit lib pkgs settings; }
+
+      ../../apps/niot.nix { inherit pkgs settings; }
+
+      ../../system/app/sshd.nix
     ];
 
   users.mutableUsers = false;

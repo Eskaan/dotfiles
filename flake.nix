@@ -76,7 +76,7 @@
       };
 
       # Programs that can be run by calling this flake
-      apps = forAllSystems( system: import ./apps { inherit pkgs; } );
+      apps = forAllSystems( system: import ./apps { inherit pkgs settings; } );
     };
       
   inputs = {
