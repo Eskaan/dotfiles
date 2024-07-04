@@ -1,5 +1,3 @@
-{ config, lib, pkgs, ... }:
-
 {
   users.groups.minecraft = {};
   users.users.minecraft = {
