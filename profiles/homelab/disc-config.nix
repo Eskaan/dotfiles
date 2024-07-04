@@ -48,5 +48,21 @@
         };
       };
     };
+    zpool = {
+      hdd-backup = {
+        #mountpoint = "/hdd-backup";
+        type = "zpool";
+        mode = "";
+        options = {
+          ashift = "12";
+        };
+        rootFsOptions = {
+          compression = "zstd";
+          atime = "off";
+          xattr = "sa";
+          recordsize = "128K";
+        };
+      };
+    };
   };
 }

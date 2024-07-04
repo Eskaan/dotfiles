@@ -10,8 +10,8 @@
     disks = {
       # Disks used for disko config
       # Options may depend on profile
-      main = "/dev/by-id/nvme-WD_Green_SN350_2TB_224805467712";
-      backup = "/dev/by-id/ata-TOSHIBA_MQ01ACF050_16TLC6DRT";
+      main = "/dev/disk/by-id/nvme-WD_Green_SN350_2TB_224805467712";
+      backup = "/dev/disk/by-id/ata-TOSHIBA_MQ01ACF050_16TLC6DRT";
     };
     bootMode = "uefi"; # Boot mode, uefi or bios
     grubDevice = ""; # Grub device, only needed for BIOS
