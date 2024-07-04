@@ -52,6 +52,7 @@
             # pass config variables from above
             inherit settings;
             inherit inputs;
+            inherit pkgs;
           };
         };
       };
