@@ -22,7 +22,7 @@
     username = "eskaan"; # username
     name = "Eskaan"; # name/identifier
     email = "eskaan@eskaan.de"; # email (used for certain configurations)
-    dotfilesDir = "~/dotfiles"; # absolute path of the local repo
+    dotfilesDir = "/home/"+username+"/dotfiles"; # absolute path of the local repo
     theme = "io"; # selcted theme from my themes directory (./themes/)
     wm = "hyprland"; # Selected window manager or desktop environment; must select one in both ./user/wm/ and ./system/wm/
     # window manager type (hyprland or x11) translator

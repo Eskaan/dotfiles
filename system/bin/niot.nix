@@ -8,13 +8,14 @@ let
       $0 sync
       exit 0
     fi
-    case $1 in:
+    case $1 in
       "sync")
-        if [ $# == 1 ]]; then
+        if [ $# == 1 ]; then
           $0 sync system
           $0 sync user
+          exit 0
         fi
-        case $2 in:
+        case $2 in
           "user")
             home-manager switch --flake "${settings.user.dotfilesDir}#user"
             ;;
