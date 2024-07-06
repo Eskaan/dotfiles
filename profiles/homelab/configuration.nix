@@ -1,15 +1,17 @@
 { lib, pkgs, settings, ... }:
 
 {
-  imports =
-    [
-      ../../system/hardware-configuration.nix
-      ../base.nix
+  imports = [
+    ../../system/hardware-configuration.nix
+    ../base.nix
 
-      ../../system/bin/niot.nix
-      
-      ../../system/app/sshd.nix
-    ];
+    ../../system/bin/niot.nix
+    
+    ../../system/app/sshd.nix
+    ../../system/app/firewall.nix
+    
+    ../../system/app/minecraft.nix
+  ];
 
   users.mutableUsers = false;
   users.users.eskaan = {
@@ -27,19 +29,6 @@
     wget
     curl
     git
-
-    # Sensors and monitors
-    htop
-    lm_sensors
-    i2c-tools
-    hdparm
-    smartmontools
-    amdctl
-    linuxPackages.cpupower
-    ethtool
-
-    # Backup drives
-    linuxPackages.zfs
   ];
 
 

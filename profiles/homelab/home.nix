@@ -1,6 +1,12 @@
 { config, pkgs, settings, ... }:
 
 {
+  imports = [
+    ../../user/app/hardware-monitoring.nix
+
+    ../../user/shell/cli.nix
+    ../../user/shell/sh.nix
+  ];
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = settings.user.username;

@@ -1,4 +1,4 @@
-{ settings, lib, ... }: {
+{ settings, lib, pkgs, ... }: {
   disko.devices = {
     disk = {
       main-storage = {
@@ -50,7 +50,7 @@
     };
     zpool = {
       hdd-backup = {
-        #mountpoint = "/hdd-backup";
+        mountpoint = "/hdd-backup";
         type = "zpool";
         mode = "";
         options = {
@@ -68,5 +68,6 @@
 
   services.zfs.trim.enable = true;
   services.zfs.autoScrub.enable = true;
-  boot.zfs.extraPools = [ "hdd-backup" ];
+  #äboot.zfs.extraPools = [ "hdd-backup" ];
+  environment.systemPackages = with pkgs; [ linuxPackages.zfs ];
 }
