@@ -14,7 +14,7 @@
       access_log /var/log/nginx/access.log;
     '';
     
-    virtualHosts."10.42.42.150" = {
+    virtualHosts."nix-cache.eskaan.de" = {
       locations."/" = {
         root = "/var/public-nix-cache";
         extraConfig = ''
@@ -35,7 +35,7 @@
         # when the upstream host is not reachable for a short time when
         # nginx is started.
         resolver 127.0.0.1;
-        set $upstream_endpoint http://cache.nixos.org;
+        set $upstream_endpoint https://cache.nixos.org;
       '';
       
       locations."@fallback" = {
@@ -66,4 +66,7 @@
       };
     };
   };
+
+  # Use cache for own needs
+  nix.settings.substituters = [ "https://nix-cache.eskaan.de/" ];
 }

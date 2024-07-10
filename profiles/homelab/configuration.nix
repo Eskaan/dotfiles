@@ -12,7 +12,8 @@
     
     ../../system/app/sshd.nix
     ../../system/app/firewall.nix
-    
+
+    ../../system/app/nginx.nix
     ../../system/app/minecraft.nix
   ];
 
