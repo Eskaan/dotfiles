@@ -6,6 +6,9 @@
     ../base.nix
 
     ../../system/bin/niot.nix
+
+    ../../system/shell/sh.nix
+    ../../system/shell/cli.nix
     
     ../../system/app/sshd.nix
     ../../system/app/firewall.nix

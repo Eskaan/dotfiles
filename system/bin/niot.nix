@@ -10,24 +10,26 @@ let
     fi
     case $1 in
       "sync")
-        if [ $# == 1 ]; then
-          $0 sync system
-          $0 sync user
-          exit 0
-        fi
-        case $2 in
-          "user")
-            home-manager switch --flake "${settings.user.dotfilesDir}#user"
-            ;;
-          "system")
-            sudo nixos-rebuild switch --flake "${settings.user.dotfilesDir}#system"
-            ;;
-          *)
-            echo "Usage: $0 sync [system|user]"
-            echo "Sync system or user configuration to config directory."
-            echo "If nothing is specified, both will be synced."
-            ;;
-        esac
+        sudo nixos-rebuild switch --flake "${settings.user.dotfilesDir}#system"
+
+	#if [ $# == 1 ]; then
+        #  $0 sync system
+        #  $0 sync user
+        #  exit 0
+        #fi
+        #case $2 in
+        #  "user")
+        #    home-manager switch --flake "${settings.user.dotfilesDir}#user"
+        #    ;;
+        #  "system")
+        #    sudo nixos-rebuild switch --flake "${settings.user.dotfilesDir}#system"
+        #    ;;
+        #  *)
+        #    echo "Usage: $0 sync [system|user]"
+        #    echo "Sync system or user configuration to config directory."
+        #    echo "If nothing is specified, both will be synced."
+        #    ;;
+        #esac
         ;;
       "update")
         sudo nix flake update "${settings.user.dotfilesDir}"

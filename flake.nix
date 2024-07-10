@@ -57,7 +57,7 @@
         };
       };
 
-      homeConfigurations = {
+      /*homeConfigurations = {
         user = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
@@ -70,7 +70,7 @@
             inherit inputs;
           };
         };
-      };
+      };*/
 
       diskoConfigurations = {
         disko = import (./. + "/profiles" + ("/" + settings.system.profile) + "/disc-config.nix") { inherit settings; inherit lib; };

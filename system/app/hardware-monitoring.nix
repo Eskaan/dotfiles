@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  home.packages = with pkgs; [
+  environment.systemPackages = with pkgs; [
       # Sensors and monitors
     htop
     lm_sensors
