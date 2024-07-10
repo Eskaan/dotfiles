@@ -9,5 +9,7 @@
     amdctl
     linuxPackages.cpupower
     ethtool
+
+    stress
   ];
 }

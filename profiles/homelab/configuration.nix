@@ -9,9 +9,11 @@
 
     ../../system/shell/sh.nix
     ../../system/shell/cli.nix
+    ../../system/app/hardware-monitoring.nix
     
     ../../system/app/sshd.nix
     ../../system/app/firewall.nix
+    ../../system/app/monitoring.nix
 
     ../../system/app/nginx.nix
     ../../system/app/minecraft.nix
